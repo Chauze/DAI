@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Inspector" table="inspector" catalog="db_airbus">
+        <id name="idI" type="int">
+            <column name="ID_I" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstNameI" type="string">
+            <column name="FIRST_NAME_I" length="50" />
+        </property>
+        <property name="lastNameI" type="string">
+            <column name="LAST_NAME_I" length="50" />
+        </property>
+        <property name="phoneI" type="string">
+            <column name="PHONE_I" length="40" />
+        </property>
+        <property name="faxI" type="string">
+            <column name="FAX_I" length="40" />
+        </property>
+        <property name="mobileI" type="string">
+            <column name="MOBILE_I" length="40" />
+        </property>
+        <property name="emailI" type="string">
+            <column name="EMAIL_I" length="50" />
+        </property>
+        <set name="inspectFals" inverse="true">
+            <key>
+                <column name="ID_I" not-null="true" />
+            </key>
+            <one-to-many class="Work.InspectFal" />
+        </set>
+        <set name="charges" inverse="true">
+            <key>
+                <column name="ID_I" not-null="true" />
+            </key>
+            <one-to-many class="Work.Charge" />
+        </set>
+        <set name="inspectSections" inverse="true">
+            <key>
+                <column name="ID_I" not-null="true" />
+            </key>
+            <one-to-many class="Work.InspectSection" />
+        </set>
+        <set name="inspectDelivs" inverse="true">
+            <key>
+                <column name="ID_I" not-null="true" />
+            </key>
+            <one-to-many class="Work.InspectDeliv" />
+        </set>
+    </class>
+</hibernate-mapping>

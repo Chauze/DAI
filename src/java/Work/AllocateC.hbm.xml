@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.AllocateC" table="allocate_c" catalog="db_airbus">
+        <composite-id name="id" class="Work.AllocateCId">
+            <key-property name="idC" type="int">
+                <column name="ID_C" />
+            </key-property>
+            <key-property name="idOw" type="string">
+                <column name="ID_OW" length="128" />
+            </key-property>
+            <key-property name="dateStartC" type="date">
+                <column name="DATE_START_C" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="car" class="Work.Car" update="false" insert="false" fetch="select">
+            <column name="ID_C" not-null="true" />
+        </many-to-one>
+        <many-to-one name="owner" class="Work.Owner" update="false" insert="false" fetch="select">
+            <column name="ID_OW" length="128" not-null="true" />
+        </many-to-one>
+        <property name="dateEndC" type="date">
+            <column name="DATE_END_C" length="10" />
+        </property>
+        <property name="statusC" type="string">
+            <column name="STATUS_C" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="db_airbus"/>
+  <table-filter match-name="fal"/>
+  <table-filter match-name="allocate_h"/>
+  <table-filter match-name="hostess"/>
+  <table-filter match-name="allocate_o"/>
+  <table-filter match-name="inspect_deliv"/>
+  <table-filter match-name="charge"/>
+  <table-filter match-name="owner"/>
+  <table-filter match-name="aircraft"/>
+  <table-filter match-name="services"/>
+  <table-filter match-name="inspector"/>
+  <table-filter match-name="delivery"/>
+  <table-filter match-name="allocate_c"/>
+  <table-filter match-name="secretary"/>
+  <table-filter match-name="office"/>
+  <table-filter match-name="inspect_section"/>
+  <table-filter match-name="car"/>
+  <table-filter match-name="location"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="inspect_fal"/>
+  <table-filter match-name="section"/>
+  <table-filter match-name="allocate_s"/>
+</hibernate-reverse-engineering>

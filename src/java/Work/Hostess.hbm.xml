@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Hostess" table="hostess" catalog="db_airbus">
+        <id name="idHos" type="int">
+            <column name="ID_HOS" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="location" class="Work.Location" fetch="select">
+            <column name="ID_L" not-null="true" />
+        </many-to-one>
+        <many-to-one name="services" class="Work.Services" fetch="select">
+            <column name="ID_SERV" not-null="true" />
+        </many-to-one>
+        <property name="firstNameHos" type="string">
+            <column name="FIRST_NAME_HOS" length="50" />
+        </property>
+        <property name="lastNameHos" type="string">
+            <column name="LAST_NAME_HOS" length="50" />
+        </property>
+        <property name="phoneHos" type="string">
+            <column name="PHONE_HOS" length="40" />
+        </property>
+        <property name="faxHos" type="string">
+            <column name="FAX_HOS" length="40" />
+        </property>
+        <property name="mobileHos" type="string">
+            <column name="MOBILE_HOS" length="40" />
+        </property>
+        <property name="emailHos" type="string">
+            <column name="EMAIL_HOS" length="50" />
+        </property>
+        <property name="statusHos" type="string">
+            <column name="STATUS_HOS" length="50" not-null="true" />
+        </property>
+        <set name="allocateHs" inverse="true">
+            <key>
+                <column name="ID_HOS" not-null="true" />
+            </key>
+            <one-to-many class="Work.AllocateH" />
+        </set>
+    </class>
+</hibernate-mapping>

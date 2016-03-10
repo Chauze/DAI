@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Owner" table="owner" catalog="db_airbus">
+        <id name="idOw" type="string">
+            <column name="ID_OW" length="128" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="owner" class="Work.Owner" fetch="select">
+            <column name="ID_OW_GOT_OWNER" length="128" />
+        </many-to-one>
+        <property name="mainFax" type="string">
+            <column name="MAIN_FAX" length="40" />
+        </property>
+        <property name="mainPhone" type="string">
+            <column name="MAIN_PHONE" length="40" />
+        </property>
+        <property name="fullName" type="string">
+            <column name="FULL_NAME" length="100" />
+        </property>
+        <property name="icaoCode" type="string">
+            <column name="ICAO_CODE" length="50" />
+        </property>
+        <property name="shortName" type="string">
+            <column name="SHORT_NAME" length="100" />
+        </property>
+        <property name="emailOw" type="string">
+            <column name="EMAIL_OW" length="50" />
+        </property>
+        <set name="charges" inverse="true">
+            <key>
+                <column name="ID_OW" length="128" not-null="true" />
+            </key>
+            <one-to-many class="Work.Charge" />
+        </set>
+        <set name="allocateOs" inverse="true">
+            <key>
+                <column name="ID_OW" length="128" not-null="true" />
+            </key>
+            <one-to-many class="Work.AllocateO" />
+        </set>
+        <set name="owners" inverse="true">
+            <key>
+                <column name="ID_OW_GOT_OWNER" length="128" />
+            </key>
+            <one-to-many class="Work.Owner" />
+        </set>
+        <set name="aircrafts" inverse="true">
+            <key>
+                <column name="ID_OW" length="128" not-null="true" />
+            </key>
+            <one-to-many class="Work.Aircraft" />
+        </set>
+        <set name="allocateHs" inverse="true">
+            <key>
+                <column name="ID_OW" length="128" not-null="true" />
+            </key>
+            <one-to-many class="Work.AllocateH" />
+        </set>
+        <set name="allocateCs" inverse="true">
+            <key>
+                <column name="ID_OW" length="128" not-null="true" />
+            </key>
+            <one-to-many class="Work.AllocateC" />
+        </set>
+        <set name="allocateSs" inverse="true">
+            <key>
+                <column name="ID_OW" length="128" not-null="true" />
+            </key>
+            <one-to-many class="Work.AllocateS" />
+        </set>
+    </class>
+</hibernate-mapping>

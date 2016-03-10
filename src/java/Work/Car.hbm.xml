@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Car" table="car" catalog="db_airbus">
+        <id name="idC" type="int">
+            <column name="ID_C" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="location" class="Work.Location" fetch="select">
+            <column name="ID_L" not-null="true" />
+        </many-to-one>
+        <many-to-one name="services" class="Work.Services" fetch="select">
+            <column name="ID_SERV" not-null="true" />
+        </many-to-one>
+        <property name="registration" type="string">
+            <column name="REGISTRATION" length="50" />
+        </property>
+        <property name="model" type="string">
+            <column name="MODEL" length="50" />
+        </property>
+        <property name="brand" type="string">
+            <column name="BRAND" length="50" />
+        </property>
+        <property name="statusCar" type="string">
+            <column name="STATUS_CAR" length="50" not-null="true" />
+        </property>
+        <set name="allocateCs" inverse="true">
+            <key>
+                <column name="ID_C" not-null="true" />
+            </key>
+            <one-to-many class="Work.AllocateC" />
+        </set>
+    </class>
+</hibernate-mapping>

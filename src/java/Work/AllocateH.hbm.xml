@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.AllocateH" table="allocate_h" catalog="db_airbus">
+        <composite-id name="id" class="Work.AllocateHId">
+            <key-property name="idHos" type="int">
+                <column name="ID_HOS" />
+            </key-property>
+            <key-property name="idOw" type="string">
+                <column name="ID_OW" length="128" />
+            </key-property>
+            <key-property name="dateStartH" type="date">
+                <column name="DATE_START_H" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="hostess" class="Work.Hostess" update="false" insert="false" fetch="select">
+            <column name="ID_HOS" not-null="true" />
+        </many-to-one>
+        <many-to-one name="owner" class="Work.Owner" update="false" insert="false" fetch="select">
+            <column name="ID_OW" length="128" not-null="true" />
+        </many-to-one>
+        <property name="dateEndH" type="date">
+            <column name="DATE_END_H" length="10" />
+        </property>
+        <property name="statusH" type="string">
+            <column name="STATUS_H" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

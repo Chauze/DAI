@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Delivery" table="delivery" catalog="db_airbus">
+        <id name="idD" type="int">
+            <column name="ID_D" />
+            <generator class="assigned" />
+        </id>
+        <property name="nameD" type="string">
+            <column name="NAME_D" length="50" />
+        </property>
+        <property name="daysD" type="int">
+            <column name="DAYS_D" not-null="true" />
+        </property>
+        <set name="inspectDelivs" inverse="true">
+            <key>
+                <column name="ID_D" not-null="true" />
+            </key>
+            <one-to-many class="Work.InspectDeliv" />
+        </set>
+    </class>
+</hibernate-mapping>

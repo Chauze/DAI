@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Office" table="office" catalog="db_airbus">
+        <id name="codeO" type="long">
+            <column name="CODE_O" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="location" class="Work.Location" fetch="select">
+            <column name="ID_L" not-null="true" />
+        </many-to-one>
+        <many-to-one name="services" class="Work.Services" fetch="select">
+            <column name="ID_SERV" not-null="true" />
+        </many-to-one>
+        <property name="building" type="string">
+            <column name="BUILDING" length="50" />
+        </property>
+        <property name="statusOff" type="string">
+            <column name="STATUS_OFF" length="50" not-null="true" />
+        </property>
+        <set name="allocateOs" inverse="true">
+            <key>
+                <column name="CODE_O" not-null="true" />
+            </key>
+            <one-to-many class="Work.AllocateO" />
+        </set>
+    </class>
+</hibernate-mapping>

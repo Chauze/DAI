@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.AllocateO" table="allocate_o" catalog="db_airbus">
+        <composite-id name="id" class="Work.AllocateOId">
+            <key-property name="idOw" type="string">
+                <column name="ID_OW" length="128" />
+            </key-property>
+            <key-property name="codeO" type="long">
+                <column name="CODE_O" />
+            </key-property>
+            <key-property name="dateStartO" type="date">
+                <column name="DATE_START_O" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="office" class="Work.Office" update="false" insert="false" fetch="select">
+            <column name="CODE_O" not-null="true" />
+        </many-to-one>
+        <many-to-one name="owner" class="Work.Owner" update="false" insert="false" fetch="select">
+            <column name="ID_OW" length="128" not-null="true" />
+        </many-to-one>
+        <property name="dateEndO" type="date">
+            <column name="DATE_END_O" length="10" />
+        </property>
+        <property name="statusO" type="string">
+            <column name="STATUS_O" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

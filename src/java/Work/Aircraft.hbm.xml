@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Aircraft" table="aircraft" catalog="db_airbus">
+        <id name="msn" type="int">
+            <column name="MSN" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="owner" class="Work.Owner" fetch="select">
+            <column name="ID_OW" length="128" not-null="true" />
+        </many-to-one>
+        <property name="projectCode" type="string">
+            <column name="PROJECT_CODE" length="1" />
+        </property>
+        <property name="program" type="string">
+            <column name="PROGRAM" length="1" />
+        </property>
+        <property name="aircraftType" type="string">
+            <column name="AIRCRAFT_TYPE" length="8" />
+        </property>
+        <property name="projectName" type="string">
+            <column name="PROJECT_NAME" length="4" />
+        </property>
+        <property name="fordsCode" type="string">
+            <column name="FORDS_CODE" length="1" />
+        </property>
+        <property name="sapCode" type="string">
+            <column name="SAP_CODE" length="2" />
+        </property>
+        <property name="falRank" type="string">
+            <column name="FAL_RANK" length="1" />
+        </property>
+        <property name="engNumer" type="java.lang.Integer">
+            <column name="ENG_NUMER" />
+        </property>
+        <property name="cirComment" type="string">
+            <column name="CIR_COMMENT" />
+        </property>
+        <property name="crewNumber" type="java.lang.Integer">
+            <column name="CREW_NUMBER" />
+        </property>
+        <set name="inspectFals" inverse="true">
+            <key>
+                <column name="MSN" not-null="true" />
+            </key>
+            <one-to-many class="Work.InspectFal" />
+        </set>
+        <set name="inspectSections" inverse="true">
+            <key>
+                <column name="MSN" not-null="true" />
+            </key>
+            <one-to-many class="Work.InspectSection" />
+        </set>
+        <set name="inspectDelivs" inverse="true">
+            <key>
+                <column name="MSN" not-null="true" />
+            </key>
+            <one-to-many class="Work.InspectDeliv" />
+        </set>
+    </class>
+</hibernate-mapping>

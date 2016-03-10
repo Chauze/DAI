@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Services" table="services" catalog="db_airbus">
+        <id name="idServ" type="int">
+            <column name="ID_SERV" />
+            <generator class="assigned" />
+        </id>
+        <property name="nameServ" type="string">
+            <column name="NAME_SERV" length="50" />
+        </property>
+        <set name="secretaries" inverse="true">
+            <key>
+                <column name="ID_SERV" not-null="true" />
+            </key>
+            <one-to-many class="Work.Secretary" />
+        </set>
+        <set name="offices" inverse="true">
+            <key>
+                <column name="ID_SERV" not-null="true" />
+            </key>
+            <one-to-many class="Work.Office" />
+        </set>
+        <set name="hostesses" inverse="true">
+            <key>
+                <column name="ID_SERV" not-null="true" />
+            </key>
+            <one-to-many class="Work.Hostess" />
+        </set>
+        <set name="cars" inverse="true">
+            <key>
+                <column name="ID_SERV" not-null="true" />
+            </key>
+            <one-to-many class="Work.Car" />
+        </set>
+    </class>
+</hibernate-mapping>

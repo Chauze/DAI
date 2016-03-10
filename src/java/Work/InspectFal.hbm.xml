@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.InspectFal" table="inspect_fal" catalog="db_airbus">
+        <composite-id name="id" class="Work.InspectFalId">
+            <key-property name="idF" type="int">
+                <column name="ID_F" />
+            </key-property>
+            <key-property name="msn" type="int">
+                <column name="MSN" />
+            </key-property>
+            <key-property name="idI" type="int">
+                <column name="ID_I" />
+            </key-property>
+            <key-property name="idL" type="int">
+                <column name="ID_L" />
+            </key-property>
+            <key-property name="dateStartF" type="date">
+                <column name="DATE_START_F" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="inspector" class="Work.Inspector" update="false" insert="false" fetch="select">
+            <column name="ID_I" not-null="true" />
+        </many-to-one>
+        <many-to-one name="aircraft" class="Work.Aircraft" update="false" insert="false" fetch="select">
+            <column name="MSN" not-null="true" />
+        </many-to-one>
+        <many-to-one name="location" class="Work.Location" update="false" insert="false" fetch="select">
+            <column name="ID_L" not-null="true" />
+        </many-to-one>
+        <many-to-one name="fal" class="Work.Fal" update="false" insert="false" fetch="select">
+            <column name="ID_F" not-null="true" />
+        </many-to-one>
+        <property name="statusFal" type="string">
+            <column name="STATUS_FAL" length="40" />
+        </property>
+        <property name="start" type="date">
+            <column name="Start" length="10" />
+        </property>
+        <property name="end" type="date">
+            <column name="End" length="10" />
+        </property>
+        <property name="dateEndF" type="date">
+            <column name="DATE_END_F" length="10" />
+        </property>
+        <property name="comments" type="string">
+            <column name="COMMENTS" length="65535" not-null="true" />
+        </property>
+        <property name="mailF" type="string">
+            <column name="MAIL_F" length="40" not-null="true" />
+        </property>
+        <property name="dateIns" type="date">
+            <column name="DATE_INS" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

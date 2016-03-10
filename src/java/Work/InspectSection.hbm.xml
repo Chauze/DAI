@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.InspectSection" table="inspect_section" catalog="db_airbus">
+        <composite-id name="id" class="Work.InspectSectionId">
+            <key-property name="idS" type="int">
+                <column name="ID_S" />
+            </key-property>
+            <key-property name="msn" type="int">
+                <column name="MSN" />
+            </key-property>
+            <key-property name="idI" type="int">
+                <column name="ID_I" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="inspector" class="Work.Inspector" update="false" insert="false" fetch="select">
+            <column name="ID_I" not-null="true" />
+        </many-to-one>
+        <many-to-one name="aircraft" class="Work.Aircraft" update="false" insert="false" fetch="select">
+            <column name="MSN" not-null="true" />
+        </many-to-one>
+        <many-to-one name="section" class="Work.Section" update="false" insert="false" fetch="select">
+            <column name="ID_S" not-null="true" />
+        </many-to-one>
+        <property name="statusSect" type="string">
+            <column name="STATUS_SECT" length="40" />
+        </property>
+        <property name="dateStartS" type="date">
+            <column name="DATE_START_S" length="10" />
+        </property>
+        <property name="dateEndS" type="date">
+            <column name="DATE_END_S" length="10" />
+        </property>
+        <property name="dateProdStart" type="date">
+            <column name="DATE_PROD_START" length="10" />
+        </property>
+        <property name="dateProdEnd" type="date">
+            <column name="DATE_PROD_END" length="10" />
+        </property>
+        <property name="comments" type="string">
+            <column name="COMMENTS" length="65535" />
+        </property>
+        <property name="mailS" type="string">
+            <column name="MAIL_S" length="40" />
+        </property>
+        <property name="dateIns" type="date">
+            <column name="DATE_INS" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

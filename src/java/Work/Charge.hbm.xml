@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 mars 2012 07:45:39 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="Work.Charge" table="charge" catalog="db_airbus">
+        <composite-id name="id" class="Work.ChargeId">
+            <key-property name="idOw" type="string">
+                <column name="ID_OW" length="128" />
+            </key-property>
+            <key-property name="idI" type="int">
+                <column name="ID_I" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="inspector" class="Work.Inspector" update="false" insert="false" fetch="select">
+            <column name="ID_I" not-null="true" />
+        </many-to-one>
+        <many-to-one name="owner" class="Work.Owner" update="false" insert="false" fetch="select">
+            <column name="ID_OW" length="128" not-null="true" />
+        </many-to-one>
+        <property name="dateC" type="string">
+            <column name="DATE_C" length="32" />
+        </property>
+        <property name="belongsOwner" type="string">
+            <column name="BELONGS_OWNER" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

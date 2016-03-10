@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_airbus?zeroDateTimeBehavior=convertToNull
+</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping resource="Work/Office.hbm.xml"/>
+    <mapping resource="Work/Hostess.hbm.xml"/>
+    <mapping resource="Work/AllocateH.hbm.xml"/>
+    <mapping resource="Work/Fal.hbm.xml"/>
+    <mapping resource="Work/Inspector.hbm.xml"/>
+    <mapping resource="Work/AllocateS.hbm.xml"/>
+    <mapping resource="Work/AllocateC.hbm.xml"/>
+    <mapping resource="Work/Charge.hbm.xml"/>
+    <mapping resource="Work/Aircraft.hbm.xml"/>
+    <mapping resource="Work/InspectFal.hbm.xml"/>
+    <mapping resource="Work/Section.hbm.xml"/>
+    <mapping resource="Work/Delivery.hbm.xml"/>
+    <mapping resource="Work/Owner.hbm.xml"/>
+    <mapping resource="Work/InspectSection.hbm.xml"/>
+    <mapping resource="Work/Car.hbm.xml"/>
+    <mapping resource="Work/AllocateO.hbm.xml"/>
+    <mapping resource="Work/Secretary.hbm.xml"/>
+    <mapping resource="Work/Services.hbm.xml"/>
+    <mapping resource="Work/Users.hbm.xml"/>
+    <mapping resource="Work/Location.hbm.xml"/>
+    <mapping resource="Work/InspectDeliv.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
